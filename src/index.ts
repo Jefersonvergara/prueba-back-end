@@ -21,7 +21,7 @@ app.use(cors({
   const server = http.createServer(app);
   
   server.listen(3000, () => {
-    console.log('Server running on http://localhost:8000/');
+    console.log('Server running on http://localhost:3000/');
   });
 
   app.get('/ping',(_req,res)=>{
