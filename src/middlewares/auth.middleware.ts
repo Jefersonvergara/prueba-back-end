@@ -4,9 +4,13 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 interface AuthRequest extends Request {
-    user?: any; // Define la propiedad 'user' en la interfaz personalizada
-  }
-const authMiddleware = (req: AuthRequest, res: Response, next: NextFunction) => {
+  user?: any; // Define la propiedad 'user' en la interfaz personalizada
+}
+const authMiddleware = (
+  req: AuthRequest,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const token = req.headers.authorization?.split(' ')[1];
     if (!token) {

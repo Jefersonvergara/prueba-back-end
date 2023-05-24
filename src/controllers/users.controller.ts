@@ -1,8 +1,11 @@
 import express from 'express';
 
-import { deleteUserById, getUsers, getUserById } from '../db/users';
+import { deleteUserById, getUsers, getUserById } from '../models/users.model';
 
-export const getAllUsers = async (req: express.Request, res: express.Response) => {
+export const getAllUsers = async (
+  req: express.Request,
+  res: express.Response
+) => {
   try {
     const users = await getUsers();
 
@@ -13,22 +16,28 @@ export const getAllUsers = async (req: express.Request, res: express.Response) =
   }
 };
 
-export const deleteUser = async (req: express.Request, res: express.Response) => {
+export const deleteUser = async (
+  req: express.Request,
+  res: express.Response
+) => {
   try {
     const { id } = req.params;
 
     const deletedUser = await deleteUserById(id);
 
     return res.json({
-      "message":"usuario eliminado con exito"
+      message: 'usuario eliminado con exito',
     });
   } catch (error) {
     console.log(error);
     return res.sendStatus(400);
   }
-}
+};
 
-export const updateUser = async (req: express.Request, res: express.Response) => {
+export const updateUser = async (
+  req: express.Request,
+  res: express.Response
+) => {
   try {
     const { id } = req.params;
     const { username } = req.body;
@@ -38,7 +47,7 @@ export const updateUser = async (req: express.Request, res: express.Response) =>
     }
 
     const user = await getUserById(id);
-    
+
     user.username = username;
     await user.save();
 
@@ -47,4 +56,4 @@ export const updateUser = async (req: express.Request, res: express.Response) =>
     console.log(error);
     return res.sendStatus(400);
   }
-}
+};

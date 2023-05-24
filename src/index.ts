@@ -1,13 +1,9 @@
-import express from 'express';
-import http from 'http';
-import bodyParser from 'body-parser';
-import cookieParser from 'cookie-parser';
-import compression from 'compression';
-import cors from 'cors';
+import { serverMongo } from './infrastructure/express/server';
+
 import mongoose from 'mongoose';
-import router from './router';
 
 
+<<<<<<< HEAD
 const app = express();
      
 app.use(cors({
@@ -23,15 +19,15 @@ app.use(cors({
   server.listen(3000, () => {
     console.log('Server running on http://localhost:3000/');
   });
+=======
+ serverMongo()
+const  MONGO_URL ='mongodb+srv://jeferson:junior1112@cluster0.vfwcfpn.mongodb.net/?retryWrites=true&w=majority'
+>>>>>>> 6fa2754 (prueba backend_ddd)
 
-  app.get('/ping',(_req,res)=>{
-    console.log('ping aqui');
-    res.send('pong')
-  })
-  
- const  MONGO_URL ='mongodb+srv://jeferson:junior1112@cluster0.vfwcfpn.mongodb.net/?retryWrites=true&w=majority'
-  
  mongoose.Promise = Promise;
  mongoose.connect(MONGO_URL);
  mongoose.connection.on('error', (error: Error) => console.log(error));
+<<<<<<< HEAD
  app.use('/',router());
+=======
+>>>>>>> 6fa2754 (prueba backend_ddd)
