@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 interface AuthRequest extends Request {
-  user?: any; // Define la propiedad 'user' en la interfaz personalizada
+  user?: any; 
 }
 const authMiddleware = (
   req: AuthRequest,
@@ -18,7 +18,7 @@ const authMiddleware = (
     }
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded; // Almacenar los datos del usuario en la solicitud para su uso posterior
+    req.user = decoded;
     next();
   } catch (error) {
     return res.status(401).json({ message: 'Invalid token' });

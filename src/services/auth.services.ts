@@ -51,7 +51,7 @@ export const authenticateregisterUser = async (
       password: hashedPassword,
     });
 
-    //  return res.status(200).json(user).end();
+    
     return { status: 'success', message: 'user create successfully  ' };
   } catch (error) {
     console.log(error);
